@@ -1,0 +1,11 @@
+\subsubsection parameters ROS parameters
+
+Reads and maintains the following parameters on the ROS server
+
+- \b "~fixed_video_rate" : \b [int] Video rate min: 0, default: 0, max: 4
+- \b "~video_req_sps_hz" : \b [double] Rate for regularly requesting SPS data from drone (0: disabled) min: 0.0, default: 0.5, max: 4.0
+- \b "~altitude_limit" : \b [int] Limit altitude of Tello min: 1, default: 10, max: 100
+- \b "~attitude_limit" : \b [int] Limit attitude of Tello min: 15, default: 15, max: 25
+- \b "~low_bat_threshold" : \b [int] Set low battery threshold of Tello min: 1, default: 7, max: 100
+- \b "~vel_cmd_scale" : \b [double] Scale (down) vel_cmd value min: 0.01, default: 0.5, max: 1.0
+

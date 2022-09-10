@@ -1,0 +1,12 @@
+\subsubsection usage Usage
+\verbatim
+<node name="tello_driver_node.py" pkg="tello_driver" type="tello_driver_node.py">
+  <param name="fixed_video_rate" type="int" value="0" />
+  <param name="video_req_sps_hz" type="double" value="0.5" />
+  <param name="altitude_limit" type="int" value="10" />
+  <param name="attitude_limit" type="int" value="15" />
+  <param name="low_bat_threshold" type="int" value="7" />
+  <param name="vel_cmd_scale" type="double" value="0.5" />
+</node>
+\endverbatim
+
