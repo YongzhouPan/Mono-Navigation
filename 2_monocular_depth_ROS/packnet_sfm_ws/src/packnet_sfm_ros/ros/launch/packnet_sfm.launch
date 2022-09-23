@@ -1,0 +1,4 @@
+<launch>
+    <node name="packnet_sfm_ros_node" pkg="packnet_sfm_ros" type="packnet_sfm_node" />
+
+</launch>

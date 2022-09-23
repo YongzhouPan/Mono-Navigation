@@ -1,0 +1,7 @@
+<launch>
+    <node pkg="sc_depth_pl_ros" type="sc_depth_node.py" name="sc_depth_pl" output="screen" respawn="true">
+        <param name="sub_color_img" value="/tello/image_raw"/>
+        <param name="pub_color_img" value="/sc_depth_pl/color/image_raw"/>
+    	<param name="pub_depth_img" value="/sc_depth_pl/depth/image_raw"/>
+    </node>
+</launch>

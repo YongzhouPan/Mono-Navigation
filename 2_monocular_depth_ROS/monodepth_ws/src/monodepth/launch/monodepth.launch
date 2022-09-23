@@ -1,0 +1,6 @@
+<launch>
+    <node pkg="monodepth" type="monodepth.py" name="monodepth" output="screen" respawn="true">
+        <param name="topic_color" value="/image_syn"/>
+    	<param name="topic_depth" value="/monodepth/depth"/>
+    </node>
+</launch>

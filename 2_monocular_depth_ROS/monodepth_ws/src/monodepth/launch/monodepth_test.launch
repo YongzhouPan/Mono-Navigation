@@ -1,0 +1,6 @@
+<launch>
+    <node pkg="monodepth" type="monodepth.py" name="monodepth" output="screen" respawn="true">
+        <param name="topic_color" value="/usb_cam/image_raw"/>
+    	<param name="topic_depth" value="/camera/depth"/>
+    </node>
+</launch>

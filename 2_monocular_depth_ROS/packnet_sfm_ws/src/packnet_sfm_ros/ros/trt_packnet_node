@@ -1,0 +1,100 @@
+#!/usr/bin/env python3
+import rospy
+from sensor_msgs.msg import Image
+
+import pycuda.driver as cuda
+
+# to initialize TensorRT
+import pycuda.autoinit
+
+from cv_bridge import CvBridge, CvBridgeError
+
+from trt_packnet.trt_packnet import TrtPacknet
+
+import time
+
+STEREO_SCALE_FACTOR = 2.8
+
+TRT_FILE_PATH = "/home/peter/Desktop/MonocularROS/packnet_ros_ws/src/packnet_sfm_ros/packnet_KITTI_FR.trt"
+# NET_INPUT_H_W = (288, 384)
+# NET_INPUT_H_W = (384, 1280)
+NET_INPUT_H_W = (192, 640)
+
+
+class DepthInference(object):
+    def __init__(self):
+        self.bridge = CvBridge()
+        # self.lock = threading.Lock()
+        ## Communication
+        # queue_size=None to process only the last message
+        rospy.loginfo("Setting up publisher and subscriber ..")
+        self.rgb_image_pub = rospy.Publisher('/packnet/color/image_raw', Image, queue_size=1)
+        self.depth_image_pub = rospy.Publisher('/packnet/depth/image_raw', Image, queue_size=1)
+
+        # buff size is set so that subscriber only process the lastest message
+        # see: https://answers.ros.org/question/220502/image-subscriber-lag-despite-queue-1/?answer=220505#post-id-220505
+        self.rgb_image_sub = rospy.Subscriber("/camera/color/image_raw", Image, self.cb_image, queue_size=1, buff_size=2**24)
+
+        self.cuda_ctx = cuda.Device(0).make_context()
+        self.trt_packnet = TrtPacknet(TRT_FILE_PATH, NET_INPUT_H_W, STEREO_SCALE_FACTOR)
+        self.time_max = 0
+
+        rospy.loginfo("Ready")
+    
+    def __del__(self):
+        self.cuda_ctx.pop()
+        del self.trt_packnet
+        del self.cuda_ctx
+
+    def clean_up(self):
+        """ Backup destructor: Release cuda memory """
+        if self.trt_packnet is not None:
+            self.cuda_ctx.pop()
+            del self.trt_packnet
+            del self.cuda_ctx
+
+    def process(self, rgb_img_msg):
+
+        try:
+            rgb_image = self.bridge.imgmsg_to_cv2(rgb_img_msg, "bgr8")
+        except CvBridgeError as e:
+            rospy.loginfo(e)
+            return
+            
+        depth_img = self.trt_packnet.infer_depth(rgb_image)
+
+        depth_img_msg = self.bridge.cv2_to_imgmsg(depth_img, encoding="mono16")
+
+        # define the header
+        rgb_img_msg.header.stamp = rospy.Time.now()
+        depth_img_msg.header.stamp = rospy.Time.now()
+        rgb_img_msg.header.frame_id = "left_image"
+        depth_img_msg.header.frame_id = "left_image"
+        depth_img_msg.header.seq = rgb_img_msg.header.seq
+        
+        # publish the image and depth_image
+        self.rgb_image_pub.publish(rgb_img_msg)
+        self.depth_image_pub.publish(depth_img_msg)
+
+    def cb_image(self, data):
+        self.original_input_shape = (data.height, data.width)
+        start = time.time()
+        self.process(data)
+        process_time = time.time() - start
+        if process_time >= self.time_max and process_time < 0.1:
+            self.time_max = process_time
+        rospy.loginfo("process seq: {}, time: {:03f}, max time: {:03f}".format(data.header.seq, process_time, self.time_max))
+
+
+
+if __name__ == "__main__":
+    rospy.init_node('packnet_sfm_node')
+    rospy.loginfo("Starting the node, this will take a while ...")
+    try:
+        depth_inference_node = DepthInference()
+        rospy.loginfo("Ready to do inference")
+        rospy.spin()
+    except KeyboardInterrupt:
+        rospy.on_shutdown(depth_inference_node.clean_up())
+        print("Shutting down")
+    

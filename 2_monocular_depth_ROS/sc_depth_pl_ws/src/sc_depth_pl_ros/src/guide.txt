@@ -1,0 +1,35 @@
+How to setup sc_depth_pl_ros
+1. create a conda venv, 
+   conda create -n sc_depth_ros_env python=3.6
+
+2. activate virtual environment, 
+   conda activate sc_depth_ros_env
+
+3. download packages shown below,
+   pip install pytorch-lightning==1.4.0 matplotlib opencv-python tqdm imageio path scipy test-tube configargparse
+
+4. Perharps you'll meet some problems shown below,
+
+   1)from torchmetrics.utilities.data import get_num_classes as _get_num_classes
+     ImportError: cannot import name 'get_num_classes'
+
+   2)LooseVersion = distutils.version.LooseVersion
+     AttributeError: module 'distutils' has no attribute 'version'
+     
+   3) from test_tube import Experiment
+      ImportError: cannot import name 'Experiment'
+
+   Don't worry, ALL of the above problems can be fixed by running following commmands to download proper packages,
+
+   1) Problem 1, try running,
+      pip install torchmetrics==0.6.0
+
+   2) Problem 2, try running,
+      pip install setuptools==59.5.0 
+
+   3) Problem 3, try running,
+      pip install test-tube==0.7.5
+   And don't forget to activate your venv when you download packages
+
+
+   
