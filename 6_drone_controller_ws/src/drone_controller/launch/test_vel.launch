@@ -1,0 +1,4 @@
+<launch>
+    <node pkg="drone_controller" name="drone_controller" type="vel_test.py" output="screen">
+    </node>
+</launch>

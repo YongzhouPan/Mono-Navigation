@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+
+<launch>
+    <node pkg="depth_repub" name="depth_repub" type="depth_repub.py" output="screen">
+        <param name="camera_info_path" value="$(find depth_repub)/config/camera_info.yaml"/>
+    </node>
+</launch>

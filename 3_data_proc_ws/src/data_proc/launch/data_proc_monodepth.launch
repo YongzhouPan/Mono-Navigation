@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+
+<launch>
+    <node pkg="data_proc" name="data_proc" type="data_proc_monodepth.py" output="screen">
+        <param name="camera_info_path" value="$(find data_proc)/config/camera_info.yaml"/>
+    </node>
+
+  <!-- tf -->
+  <!-- <node pkg="tf" type="stastic_transform_publisher" name="camera_link" args="0 0 0 ${-pi*105/180} 0 ${-pi*90/180} base_link camera_link 50"/> -->
+
+</launch>

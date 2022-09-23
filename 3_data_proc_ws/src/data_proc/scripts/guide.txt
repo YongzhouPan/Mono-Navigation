@@ -1,0 +1,7 @@
+Here are some points need to pay attention to,
+1. See 'depth_repub_enhanced', function 'callback',
+    # idepth = idepth * 100 * 1000
+    # idepth = np.round(idepth).astype(np.uint16)
+    # image_message = bridge.cv2_to_imgmsg(idepth, "16UC1") 
+   we take '32FC1' instead of '16UC1' &&  'np.float32' instead of 'np.uint16' because the unit of '16' is millimetre while '32' is metre
+2. ALL the rgb images && depth images are 640 * 480

@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+
+<launch>
+    <node pkg="data_proc" name="data_proc" type="data_proc_midas.py" output="screen">
+        <param name="camera_info_path" value="$(find data_proc)/config/camera_info.yaml"/>
+    </node>
+</launch>
