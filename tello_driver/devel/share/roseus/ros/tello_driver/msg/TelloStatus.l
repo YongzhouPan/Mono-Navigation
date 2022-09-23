@@ -1,1 +1,0 @@
-/home/peter/Desktop/tello_driver/devel/.private/tello_driver/share/roseus/ros/tello_driver/msg/TelloStatus.l

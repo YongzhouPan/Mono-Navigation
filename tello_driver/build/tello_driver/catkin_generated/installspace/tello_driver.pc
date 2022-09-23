@@ -1,8 +1,0 @@
-prefix=/home/peter/Desktop/tello_driver/install
-
-Name: tello_driver
-Description: Description of tello_driver
-Version: 0.3.1
-Cflags: -I${prefix}/include
-Libs: -L${prefix}/lib 
-Requires: cv_bridge camera_info_manager_py dynamic_reconfigure geometry_msgs codec_image_transport image_transport message_runtime nav_msgs rospy sensor_msgs std_msgs

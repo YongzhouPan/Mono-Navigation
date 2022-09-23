@@ -1,6 +1,0 @@
-devel_space: /home/peter/Desktop/tello_driver/devel
-install: false
-install_space: /home/peter/Desktop/tello_driver/install
-profile: default
-source_space: /home/peter/Desktop/tello_driver/src
-workspace: /home/peter/Desktop/tello_driver

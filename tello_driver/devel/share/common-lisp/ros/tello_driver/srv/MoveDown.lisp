@@ -1,1 +1,0 @@
-/home/peter/Desktop/tello_driver/devel/.private/tello_driver/share/common-lisp/ros/tello_driver/srv/MoveDown.lisp

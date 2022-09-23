@@ -1,5 +1,0 @@
-teleop_twist_keyboard
-/home/peter/Desktop/tello_driver/devel/.private/teleop_twist_keyboard/cmake.lock /home/peter/Desktop/tello_driver/devel/./cmake.lock
-/home/peter/Desktop/tello_driver/devel/.private/teleop_twist_keyboard/lib/pkgconfig/teleop_twist_keyboard.pc /home/peter/Desktop/tello_driver/devel/lib/pkgconfig/teleop_twist_keyboard.pc
-/home/peter/Desktop/tello_driver/devel/.private/teleop_twist_keyboard/share/teleop_twist_keyboard/cmake/teleop_twist_keyboardConfig-version.cmake /home/peter/Desktop/tello_driver/devel/share/teleop_twist_keyboard/cmake/teleop_twist_keyboardConfig-version.cmake
-/home/peter/Desktop/tello_driver/devel/.private/teleop_twist_keyboard/share/teleop_twist_keyboard/cmake/teleop_twist_keyboardConfig.cmake /home/peter/Desktop/tello_driver/devel/share/teleop_twist_keyboard/cmake/teleop_twist_keyboardConfig.cmake
