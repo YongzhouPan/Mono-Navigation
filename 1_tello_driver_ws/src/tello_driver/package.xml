@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>tello_driver</name>
+  <version>0.3.1</version>
+
+  <description>>This package provides a ROS interface for the TelloPy library.
+  Development of this ROS package pursues not to modify the TelloPy library, 
+  instead apply any modification or addition to the ros_driver package in an encapsulated manner.</description>
+
+  <author email="jordyvanappeven@gmail.com">Jordy van Appeven</author>
+  <maintainer email="jordyvanappeven@gmail.com">Jordy van Appeven</maintainer>
+
+  <!-- Url tags are optional, but mutiple are allowed, one per tag -->
+  <!-- Optional attribute type can be: website, bugtracker, or repository -->
+  <!-- Example: -->
+  <url>http://www.ros.org/wiki/tello_driver</url>
+  <url type="website">https://github.com/appie-17/tello_driver</url>
+  <url type="bugtracker">https://github.com/appie-17/tello_driver/issues</url>
+  
+
+  <license>Apache2</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>message_generation</build_depend>
+  <build_depend>cv_bridge</build_depend>
+  <build_depend>camera_info_manager_py</build_depend>
+  <build_depend>dynamic_reconfigure</build_depend>
+  <build_depend>geometry_msgs</build_depend>
+  <build_depend>codec_image_transport</build_depend>
+  <build_depend>image_transport</build_depend>
+  <build_depend>nav_msgs</build_depend>
+  <build_depend>rospy</build_depend>
+  <build_depend>sensor_msgs</build_depend>
+  <build_depend>std_msgs</build_depend>
+  
+  <build_export_depend>geometry_msgs</build_export_depend>
+  <build_export_depend>rospy</build_export_depend>
+  <build_export_depend>sensor_msgs</build_export_depend>
+  <build_export_depend>std_msgs</build_export_depend>
+
+  <exec_depend>cv_bridge</exec_depend>
+  <exec_depend>camera_info_manager_py</exec_depend>
+  <exec_depend>dynamic_reconfigure</exec_depend>
+  <exec_depend>geometry_msgs</exec_depend>
+  <exec_depend>codec_image_transport</exec_depend>
+  <exec_depend>image_transport</exec_depend>
+  <exec_depend>message_runtime</exec_depend>
+  <exec_depend>nav_msgs</exec_depend>
+  <exec_depend>rospy</exec_depend>
+  <exec_depend>sensor_msgs</exec_depend>
+  <exec_depend>std_msgs</exec_depend>
+
+</package>

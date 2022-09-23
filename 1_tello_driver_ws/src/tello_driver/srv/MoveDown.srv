@@ -1,0 +1,3 @@
+uint8   cm
+---
+bool    command_status

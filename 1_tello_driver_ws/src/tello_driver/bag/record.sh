@@ -1,0 +1,1 @@
+rosbag record /camera/color/image_raw
